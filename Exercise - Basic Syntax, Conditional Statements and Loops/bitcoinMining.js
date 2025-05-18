@@ -26,10 +26,10 @@ function bitcoinMining(arr) {
         currentDay++;
     }
 
-    console.log(`Bought bitcoinMinings: ${bitcoinBoughtCount}`);
+    console.log(`Bought bitcoins: ${bitcoinBoughtCount}`);
 
     if (bitcoinBoughtCount > 0) {
-        console.log(`Day of the first purchased bitcoinMining: ${firstBitcoinDay}`);
+        console.log(`Day of the first purchased bitcoin: ${firstBitcoinDay}`);
     }
     
     console.log(`Left money: ${totalMoney.toFixed(2)} lv.`);
