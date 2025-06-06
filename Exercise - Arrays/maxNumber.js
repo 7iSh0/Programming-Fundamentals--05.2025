@@ -6,7 +6,7 @@ function maxNumber(arr) {
         let isMax = true;
         let left = arr[i];
 
-        for (let j = i; j < arr.length; j++) {
+        for (let j = i + 1; j < arr.length; j++) {
             let right = arr[j];
 
             if (right >= left) {

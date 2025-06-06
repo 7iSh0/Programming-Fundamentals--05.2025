@@ -1,48 +1,49 @@
 function ladybugs(arr) {
 
-    let size = arr[0];
-    let ladybugs = new Array(size).fill(0);
+  let fieldSize = Number(arr[0]);
+  let initialPositions = arr[1].split(' ').map(Number);
+  let commands = arr.slice(2);
+  let field = Array(fieldSize).fill(0);
 
-    if (arr[1]) {
-        let initialPositions = arr[1].split(' ').map(Number);
-        for (let pos of initialPositions) {
-            if (pos < size) {
-                ladybugs[pos] = 1;
-            }
-        }
+  for (let index of initialPositions) {
+    if (index >= 0 && index < fieldSize) {
+      field[index] = 1;
+    }
+  }
+
+  for (let command of commands) {
+    let [startIndexStr, direction, flyLengthStr] = command.split(' ');
+    let startIndex = Number(startIndexStr);
+    let flyLength = Number(flyLengthStr);
+
+    if (startIndex < 0 || startIndex >= fieldSize || field[startIndex] !== 1) {
+      continue;
     }
 
-    for (let i = 2; i < arr.length; i++) {
-        let [index, direction, steps] = arr[i].split(' ');
-        index = Number(index);
-        steps = Number(steps);
+    field[startIndex] = 0;
 
-        if (ladybugs[index] === 1) {
-            ladybugs[index] = 0;
-
-            if (direction === 'right') {
-                index += steps;
-            } else if (direction === 'left') {
-                index -= steps;
-            }
-
-            if (index >= 0 && index < size) {
-                while (ladybugs[index] === 1) {
-                    if (direction === 'right') {
-                        index += steps;
-                    } else if (direction === 'left') {
-                        index -= steps;
-                    }
-                    if (index < 0 || index >= size) break;
-                }
-                if (index >= 0 && index < size) {
-                    ladybugs[index] = 1;
-                }
-            }
-        }
+    if (flyLength < 0) {
+      flyLength = Math.abs(flyLength);
+      direction = direction === 'right' ? 'left' : 'right';
     }
 
-    console.log(ladybugs.join(' '));
+    let position = startIndex;
+
+    while (true) {
+      position += direction === 'right' ? flyLength : -flyLength;
+
+      if (position < 0 || position >= fieldSize) {
+        break;
+      }
+
+      if (field[position] === 0) {
+        field[position] = 1;
+        break;
+      }
+    }
+  }
+
+  console.log(field.join(' '));
 }
 
 ladybugs([ 3, '0 1', '0 right 1', '2 right 1' ]);
