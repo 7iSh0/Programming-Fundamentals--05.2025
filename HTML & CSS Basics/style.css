@@ -1,0 +1,30 @@
+h1 {
+    font-size: 42px;
+    color: yellow;
+}
+
+h1 {
+    font-size: 42px;
+    color: red;
+}
+
+h1 {
+    font-size: 42px;
+    color: blue;
+    text-align: center;
+}
+
+p {
+    padding-bottom: 15px;
+    color: yellow;
+}
+
+.formatHeader {
+    text-align: left;
+    color: orange;
+}
+
+#bearPicture {
+    height: 150px;
+    width: 200px;
+}
