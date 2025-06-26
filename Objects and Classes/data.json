@@ -1,0 +1,14 @@
+[
+    {
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "age": 33,
+        "hireDate": "05.2024"
+    },
+    {
+        "firstName": "Maria",
+        "lastName": "Georgieva",
+        "age": 27,
+        "hireDate": "08.2023"
+    }
+]
